@@ -4,13 +4,14 @@ import { Provider } from "react-redux";
 import initStore from "./store/store";
 import {BrowserRouter} from 'react-router-dom'
 import Router from "./router/router"
+import "./style.css"
 
 //  let user = 'N'
 
 ReactDOM.render(
   <BrowserRouter>
   <Provider store={initStore()}>
-    <Router />
+    <Router className="main"/>
   </Provider>
   </BrowserRouter>,
   document.getElementById("root")
