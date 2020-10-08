@@ -11,14 +11,9 @@ class Messages extends Component {
   constructor() {
     super();
     this.state = {
-      // msgArray: [
-      //   { name: "1", text: "Hello" },
-      //   { name: "Bot", text: "Hi" },
-      //   { name: "1", text: "Bye" },
-      //   { name: "Bot", text: "Wait" },
-      // ],
       mass: "",
       user: "",
+      show: false,
     };
   }
 
@@ -26,21 +21,20 @@ class Messages extends Component {
     const { messages } = this.props;
     const messageId = Object.keys(messages).length + 1;
     this.props.sendMessage(messageId, sender, text);
-    //     this.setState({
-    //       msgArray:[...this.state.messages, {name:  this.state.user === '' ? "Я" : this.state.user , text: this.state.mass }],
-    //         mass:''
-    //     });
   };
 
   handleSendMessage = (message, sender) => {
-    if (message.length > 0 && sender.length > 0) {
+    if (message.length > 0) {
       this.sendMessage(message, sender);
       this.setState({ mass: "" });
-      // this.setState({ user: "" });
     } else {
-      alert("Введите имя и сообщение");
+      alert("Введите сообщение");
     }
   };
+
+  handle = () => {
+    this.setState({ show: !this.state.show })
+  }
 
   handleChange = (evt) => {
     if (evt.keyCode !== 13) {
@@ -51,9 +45,9 @@ class Messages extends Component {
     }
   };
 
-  handleChangeName = (evt) => {
-    this.setState({ user: evt.target.value });
-  };
+  // handleChangeName = (evt) => {
+  //   this.setState({ user: evt.target.value });
+  // };
 
   componentDidUpdate() {
     const { messages } = this.props;
@@ -65,6 +59,7 @@ class Messages extends Component {
   }
 
   render() {
+    let usr = 'Me'
     let { messages } = this.props;
     const messageComponents = [];
     Object.keys(messages).forEach((key) => {
@@ -79,13 +74,13 @@ class Messages extends Component {
 
     return (
       <div className="totalfield">
-        <p>Hello {this.state.user}!</p>
+        {/* <p>Hello {this.state.user}!</p>
         <input
           type="text"
           onChange={this.handleChangeName}
           value={this.state.user}
           placeholder="Имя"
-        ></input>
+        ></input> */}
 
         <div className="messagefield">{messageComponents}</div>
         <input
@@ -97,11 +92,16 @@ class Messages extends Component {
         ></input>
         <button
           onClick={() =>
-            this.handleSendMessage(this.state.mass, this.state.user)
+            this.handleSendMessage(this.state.mass, usr )
           }
         >
           Отправить
         </button>
+        <button
+          onClick={this.handle}>
+          ОК
+        </button>
+        { this.state.show && <div>SHOWED</div>}
       </div>
     );
   }

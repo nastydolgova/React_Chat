@@ -33,7 +33,8 @@ export default function chatReducer(store = initialStore, action) {
         },
       });
     }
-    default:
+    default: {
       return store;
+    }
   }
 }

@@ -7,7 +7,7 @@
 
 input{
     padding: 5px;
-    margin-top: 5px;
+    margin: 10px 0; 
 }
 
 button{
@@ -18,4 +18,8 @@ button{
 .messagefield{
     height: 80%;
     overflow-y: scroll;
+}
+
+p{
+    word-wrap: break-word
 }

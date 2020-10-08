@@ -5,7 +5,11 @@ import Header from "../Header/Header";
 import PropTypes from "prop-types";
 import "./style.css";
 
-export default class Layout extends React.Component {
+//store
+import { bindActionCreators } from "redux";
+import connect from "react-redux/es/connect/connect";
+
+class Layout extends React.Component {
   static propTypes = {
     chatId: PropTypes.number,
   };
@@ -13,6 +17,7 @@ export default class Layout extends React.Component {
     chatId: 1,
   };
   render() {
+
     return (
       <div>
         <Header chatId={this.props.chatId} />
@@ -24,5 +29,9 @@ export default class Layout extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({}) => ({});
+  
+export default connect(mapStateToProps)(Layout);
 
 // Messages usr= { this.props.usr }
