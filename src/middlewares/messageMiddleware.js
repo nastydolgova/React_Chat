@@ -7,8 +7,8 @@ export default store => next => (action) => {
             setTimeout(() => store.dispatch(
                 sendMessage(
                     Object.keys(store.getState().msgReducer.messages).length + 1,
-                    'LUKE', 
-                    'Noooo!', 
+                    'Bot', 
+                    'We will call you back',
                     //action.chatId
                 )
             ), 

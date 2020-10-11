@@ -50,12 +50,12 @@ class Messages extends Component {
   // };
 
   componentDidUpdate() {
-    const { messages } = this.props;
-    if (Object.keys(messages).length % 2 === 1) {
-      setTimeout(() => {
-        this.sendMessage("We'll call you back", "Bot");
-      }, 500);
-    }
+    // const { messages } = this.props;
+    // if (Object.keys(messages).length % 2 === 1) {
+    //   setTimeout(() => {
+    //     this.sendMessage("We'll call you back", "Bot");
+    //   }, 500);
+    // }
   }
 
   render() {
